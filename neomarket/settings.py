@@ -78,6 +78,7 @@ WSGI_APPLICATION = 'neomarket.wsgi.application'
 import os
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 DATABASES = {
@@ -92,19 +93,6 @@ DATABASES = {
         
     }
 }
-
-LOGIN_URL = '/login/'
-
-# settings.py
-
-# Redirección después del inicio de sesión (opcional)
-LOGIN_REDIRECT_URL = 'home'  # A dónde redirigir después de iniciar sesión, por ejemplo, a la página principal
-
-# URL para el inicio de sesión
-LOGIN_URL = '/login/'  # URL que debes tener definida en tus rutas
-
-# (Opcional) URL para el cierre de sesión
-LOGOUT_REDIRECT_URL = 'home'  # A dónde redirigir después de cerrar sesión, por ejemplo, a la página principal
 
 
 import os

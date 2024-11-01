@@ -93,6 +93,40 @@ DATABASES = {
     }
 }
 
+LOGIN_URL = '/login/'
+
+# settings.py
+
+# Redirección después del inicio de sesión (opcional)
+LOGIN_REDIRECT_URL = 'home'  # A dónde redirigir después de iniciar sesión, por ejemplo, a la página principal
+
+# URL para el inicio de sesión
+LOGIN_URL = '/login/'  # URL que debes tener definida en tus rutas
+
+# (Opcional) URL para el cierre de sesión
+LOGOUT_REDIRECT_URL = 'home'  # A dónde redirigir después de cerrar sesión, por ejemplo, a la página principal
+
+
+import os
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Carpeta global de templates
+        'APP_DIRS': True,  # Habilita la búsqueda automática en la carpeta 'templates' de cada app
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

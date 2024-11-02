@@ -8,8 +8,9 @@ def home(request):
 
 from .models import Producto # Importamos el modelo producto desde la aplicación.
 
+
 def listado(request):
-    productos = Producto.objects.all() # Le pedimos que nos muestre todos los productos.
+    productos = Producto.objects.all()
     return render(request, 'listado.html', {'productos': productos})
 
 

@@ -94,7 +94,6 @@ DATABASES = {
     }
 }
 
-
 import os
 
 TEMPLATES = [

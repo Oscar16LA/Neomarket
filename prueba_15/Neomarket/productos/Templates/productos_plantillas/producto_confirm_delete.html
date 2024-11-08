@@ -1,0 +1,8 @@
+<!-- producto_confirm_delete.html -->
+<h2>Eliminar Producto</h2>
+<p>¿Estás seguro de que deseas eliminar "{{ producto.nombre }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Confirmar</button>
+</form>
+<a href="{% url 'producto_list' %}">Cancelar</a>

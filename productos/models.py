@@ -15,5 +15,5 @@ class Producto(models.Model):
     def __str__(self):
         return f"{self.nombre_producto} - {self.nombre_tienda}"
     
-    # Nota: Los demás modelos se agregarán según las necesidades del proyecto.
-    # Modelos futuros: Pedido, Pago etc.
+ 
+

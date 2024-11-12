@@ -28,9 +28,6 @@
     <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}"><i class="bi bi-shop"></i> Neomarket</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -69,23 +66,27 @@
             </tr>
           </thead>
           <tbody>
+             <!-- Itera sobre los productos disponibles -->
             {% for producto in productos %}
+              <!-- Verifica si se está realizando una búsqueda; resalta el producto si coincide con la búsqueda -->
               {% if request.GET.search and request.GET.search|lower in producto.nombre_producto|lower %}
-                <tr class="highlight">
+                <tr class="highlight">  <!-- Clase highlight para resaltar productos coincidentes -->
               {% else %}
-                <tr>
+                <tr> <!-- Fila sin resaltar para productos sin coincidencia -->
               {% endif %}
+               <!-- Muestra los detalles del producto -->
                 <td>{{ producto.nombre_tienda }}</td>
                 <td>{{ producto.nombre_producto }}</td>
                 <td>{{ producto.descripcion }}</td>
                 <td>${{ producto.precio }}</td>
-                <td>
+                <td>  <!-- Botones de acción para cada producto -->
                   <a href="{% url 'producto_detalle' producto.id %}" class="btn btn-info btn-sm" title="Ver Detalles"><i class="bi bi-eye"></i></a>
                   <a href="{% url 'producto_editar' producto.id %}" class="btn btn-warning btn-sm" title="Editar Producto"><i class="bi bi-pencil-square"></i></a>
                   <a href="{% url 'producto_eliminar' producto.id %}" class="btn btn-danger btn-sm" title="Eliminar Producto"><i class="bi bi-trash"></i></a>
                 </td>
               </tr>
             {% empty %}
+              <!-- Mensaje si no hay productos disponibles -->
               <tr>
                 <td colspan="5" class="text-center">No hay productos disponibles.</td>
               </tr>

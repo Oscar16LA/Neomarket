@@ -2,8 +2,14 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto
 from .forms import ProductoForm
 
-def home(request):
-    return render(request, 'home.html')
+def home(request): # Filtra los productos cuyo precio es menor a 10.00 y los almacena en productos_promocion
+    productos_promocion = Producto.objects.filter(precio__lt=10.00)
+      # Filtra los productos cuyo precio es mayor o igual a 10.00 y los almacena en productos_no_promocion
+    productos_no_promocion = Producto.objects.filter(precio__gte=10.00)
+    return render(request, 'home.html', {
+        'productos_promocion': productos_promocion, # Enviamos los productos en promoción al template
+        'productos_no_promocion': productos_no_promocion # Enviamos los productos no en promoción al template
+    })
 
 
 def listado(request):
@@ -15,12 +21,14 @@ def listado(request):
         productos = productos.filter(nombre_producto__icontains=search_peticion)
     
     # Pasar los productos y la consulta de búsqueda a la plantilla
-    return render(request, 'listado.html', {'productos': productos, 'search_query': search_peticion})
+    return render(request, 'listado.html', {'productos': productos, 'search_peticion': search_peticion})
 
 
 # Crear (agregar un nuevo producto)
 def producto_nuevo(request):
+     # Verifica si la solicitud es de tipo POST (enviado por el formulario para crear un producto)
     if request.method == "POST":
+        # Se crea una instancia de ProductoForm, cargando los datos enviados por POST
         form = ProductoForm(request.POST)
         if form.is_valid():
             form.save()

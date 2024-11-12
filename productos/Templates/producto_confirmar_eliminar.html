@@ -59,12 +59,10 @@
       <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"><i class="bi bi-shop"></i> Neomarket</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
+                     <!-- Enlace para volver al listado de productos -->
                 <a class="nav-link" href="{% url 'listado' %}">Productos</a>
               </li>
             </ul>
@@ -78,14 +76,16 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-body text-center">
+                <!-- Título y detalles del producto a eliminar -->
               <h2 class="card-title text-danger">¿Estás seguro de que deseas eliminar este producto?</h2>
               <p><strong>Nombre de la tienda:</strong> {{ producto.nombre_tienda }}</p>
               <p><strong>Nombre del producto:</strong> {{ producto.nombre_producto }}</p>
               <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
               <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+                  <!-- Formulario de confirmación de eliminación -->
               <form method="post" class="mt-4">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger me-2">Confirmar Eliminación</button>
+                {% csrf_token %} 
+                <button type="submit" class="btn btn-danger me-2">Confirmar Eliminación</button> <!-- Botón para confirmar eliminación y enlace para cancelar -->
                 <a href="{% url 'listado' %}" class="btn btn-secondary">Cancelar</a>
               </form>
             </div>

@@ -1,6 +1,0 @@
-<!-- producto_detail.html -->
-<h2>Detalles de {{ producto.nombre }}</h2>
-<p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
-<p><strong>Precio:</strong> ${{ producto.precio }}</p>
-<p><strong>Disponible:</strong> {{ producto.disponible|yesno:"Sí,No" }}</p>
-<a href="{% url 'producto_list' %}">Volver a la lista</a>
